@@ -6,14 +6,14 @@ export const buildUrl = (resourceName: string, id?: number) => {
   return API_URL + `/${resourceName}/${id ? id : ''}`;
 };
 
-export const processSingleResponse = <T extends object = object>(
-  response: SingularResponse<T>
-): T => {
-  return response.data;
+export const processSingleResponse = <T extends object = object>(response: {
+  data: SingularResponse<T>;
+}): T => {
+  return response.data.data;
 };
 
-export const processCollectionResponse = <T extends object = object>(
-  response: CollectionResponse<T>
-): T[] => {
-  return response.data;
+export const processCollectionResponse = <T extends object = object>(response: {
+  data: CollectionResponse<T>;
+}): T[] => {
+  return response.data.data;
 };

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Post } from '../types/Post';
 import { getAllPosts } from '../api/posts';
+import { List } from 'antd';
 
 export const Posts = () => {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -31,5 +32,27 @@ export const Posts = () => {
 
   console.log(posts);
 
-  return 'Wow';
+  return (
+    <List
+      itemLayout="vertical"
+      size="large"
+      pagination={{
+        pageSize: 3,
+      }}
+      dataSource={posts}
+      renderItem={(item) => (
+        <List.Item key={item.id}>
+          <List.Item.Meta
+            title={item.title}
+            description={
+              item?.inserted_at
+                ? new Date(item?.inserted_at).toDateString()
+                : null
+            }
+          />
+          {item.body}
+        </List.Item>
+      )}
+    />
+  );
 };
