@@ -1,32 +1,23 @@
-import { useEffect, useState } from 'react';
-import { Post } from '../types/Post';
-import { getAllPosts } from '../api/posts';
 import { PostsList } from '../components/posts/PostsList';
+import { usePosts } from '../api/queries';
+import { Loader } from '../components/layout/Loader';
+import { useNotification } from '../hooks/useNotification';
 
 export const Posts = () => {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string>('');
+  const { data, error, isLoading } = usePosts();
+  const { openNotification } = useNotification();
 
-  useEffect(() => {
-    const loadData = async () => {
-      setLoading(true);
+  if (isLoading) {
+    return <Loader />;
+  }
 
-      try {
-        const posts = await getAllPosts();
+  if (error) {
+    openNotification({
+      message: 'Error',
+      type: 'error',
+      description: (error as Error).message,
+    });
+  }
 
-        setPosts(posts);
-      } catch (e) {
-        setError((e as Error).message);
-      }
-
-      setLoading(false);
-    };
-
-    if (!error && !loading) {
-      loadData();
-    }
-  }, [error]);
-
-  return <PostsList posts={posts} />;
+  return <PostsList posts={data} />;
 };

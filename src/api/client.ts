@@ -9,26 +9,26 @@ export const getOne = async <T extends object = object>(
   resourceName: string,
   id: number
 ): Promise<T> => {
-  const response = await axios.get(buildUrl(resourceName, id));
+  const { data } = await axios.get(buildUrl(resourceName, id));
 
-  return processSingleResponse<T>(response);
+  return processSingleResponse<T>(data);
 };
 
 export const getAll = async <T extends object = object>(
   resourceName: string
 ): Promise<T[]> => {
-  const response = await axios.get(buildUrl(resourceName));
+  const { data } = await axios.get(buildUrl(resourceName));
 
-  return processCollectionResponse<T>(response);
+  return processCollectionResponse<T>(data);
 };
 
 export const create = async <T extends object = object>(
   resourceName: string,
   resource: T
 ): Promise<T> => {
-  const response = await axios.post(buildUrl(resourceName), resource);
+  const { data } = await axios.post(buildUrl(resourceName), resource);
 
-  return processSingleResponse<T>(response);
+  return processSingleResponse<T>(data);
 };
 
 export const update = async <T extends object = object>(
@@ -36,9 +36,9 @@ export const update = async <T extends object = object>(
   id: number,
   resource: T
 ): Promise<T> => {
-  const response = await axios.post(buildUrl(resourceName, id), resource);
+  const { data } = await axios.post(buildUrl(resourceName, id), resource);
 
-  return processSingleResponse<T>(response);
+  return processSingleResponse<T>(data);
 };
 
 export const deleteRecord = async (

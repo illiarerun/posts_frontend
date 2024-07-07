@@ -4,7 +4,7 @@ import { List } from 'antd';
 import { PostItem } from './PostItem';
 
 interface Props {
-  posts: Post[];
+  posts?: Post[];
 }
 
 export const PostsList: FC<Props> = ({ posts }) => {
