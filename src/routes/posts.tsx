@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Post } from '../types/Post';
 import { getAllPosts } from '../api/posts';
-import { List } from 'antd';
+import { PostsList } from '../components/posts/PostsList';
 
 export const Posts = () => {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -10,10 +10,6 @@ export const Posts = () => {
 
   useEffect(() => {
     const loadData = async () => {
-      if (error || loading) {
-        return;
-      }
-
       setLoading(true);
 
       try {
@@ -27,32 +23,10 @@ export const Posts = () => {
       setLoading(false);
     };
 
-    loadData();
-  }, []);
+    if (!error && !loading) {
+      loadData();
+    }
+  }, [error]);
 
-  console.log(posts);
-
-  return (
-    <List
-      itemLayout="vertical"
-      size="large"
-      pagination={{
-        pageSize: 3,
-      }}
-      dataSource={posts}
-      renderItem={(item) => (
-        <List.Item key={item.id}>
-          <List.Item.Meta
-            title={item.title}
-            description={
-              item?.inserted_at
-                ? new Date(item?.inserted_at).toDateString()
-                : null
-            }
-          />
-          {item.body}
-        </List.Item>
-      )}
-    />
-  );
+  return <PostsList posts={posts} />;
 };
