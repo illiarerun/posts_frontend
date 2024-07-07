@@ -8,6 +8,7 @@ export const themeConfig: ThemeConfig = {
     },
     Layout: {
       headerBg: '#F5F3ED',
+      bodyBg: '#FFFFFF',
     },
   },
 };
