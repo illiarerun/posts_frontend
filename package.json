@@ -36,7 +36,7 @@
     "vite": "^5.3.1"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,css}": "eslint --cache --fix",
-    "*.{ts,tsx,js}": "prettier --write"
+    "*.{ts,tsx,js}": "eslint --cache --fix",
+    "*.{ts,tsx,js,md}": "prettier --write"
   }
 }
