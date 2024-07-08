@@ -20,12 +20,13 @@ VITE_API_URL=http://localhost:4000/api
 ```
   
 ### NPM option:
-- Exec `npm run dev`
+- Run `npm install` to install dependencies
+- Run `npm run dev`
 - Visit `localhost:8080` in your browser
 
 ### Docker option:
-- Exec `docker build . -t <your_desired_tag_name>`
-- Exec `docker run -p 8080:8080 <your_tag_name_used_in_prev_cmd>`
+- Run `docker build . -t <your_desired_tag_name>`
+- Run `docker run -p 8080:8080 <your_tag_name_used_in_prev_cmd>`
 - Visit `localhost:8080` in your browser
 
   
