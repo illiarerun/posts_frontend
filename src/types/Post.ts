@@ -5,3 +5,5 @@ export interface Post {
   inserted_at?: string;
   updated_at?: string;
 }
+
+export type PostFields = Pick<Post, 'title' | 'body'>;

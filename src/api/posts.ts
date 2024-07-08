@@ -1,4 +1,4 @@
-import { Post } from '../types/Post';
+import { Post, PostFields } from '../types/Post';
 import { create, deleteRecord, getAll, getOne, update } from './client';
 
 export const getOnePost = async (id: number) => {
@@ -9,11 +9,11 @@ export const getAllPosts = async () => {
   return getAll<Post>('posts');
 };
 
-export const createPost = async (postData: Post) => {
-  return create<Post>('posts', postData);
+export const createPost = async (postData: PostFields) => {
+  return create<Post>('posts', { post: postData });
 };
 
-export const updatePost = async (id: number, postData: Post) => {
+export const updatePost = async (id: number, postData: PostFields) => {
   return update<Post>('posts', id, postData);
 };
 

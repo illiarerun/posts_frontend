@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Root } from './routes/root';
 import 'antd/dist/reset.css';
-import { ErrorPage } from './components/ErrorPage';
+import { ErrorPage } from './components/layout/ErrorPage';
 import { Posts } from './routes/posts';
+import { CreatePost } from './routes/create';
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Posts />,
+      },
+      {
+        path: '/create',
+        element: <CreatePost />,
       },
     ],
   },

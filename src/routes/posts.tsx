@@ -1,11 +1,13 @@
 import { PostsList } from '../components/posts/PostsList';
 import { usePosts } from '../api/queries';
 import { Loader } from '../components/layout/Loader';
-import { useNotification } from '../hooks/useNotification';
+import { Flex } from 'antd';
+import { NavButton } from '../components/ui/NavButton';
+import { useOpenNotification } from '../contexts/NotificationContext';
 
 export const Posts = () => {
   const { data, error, isLoading } = usePosts();
-  const { openNotification } = useNotification();
+  const openNotification = useOpenNotification();
 
   if (isLoading) {
     return <Loader />;
@@ -19,5 +21,10 @@ export const Posts = () => {
     });
   }
 
-  return <PostsList posts={data} />;
+  return (
+    <Flex vertical gap={16} align="center">
+      <NavButton to="create">Create New Post</NavButton>
+      <PostsList posts={data} />
+    </Flex>
+  );
 };

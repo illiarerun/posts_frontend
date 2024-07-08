@@ -24,7 +24,7 @@ export const getAll = async <T extends object = object>(
 
 export const create = async <T extends object = object>(
   resourceName: string,
-  resource: T
+  resource: unknown
 ): Promise<T> => {
   const { data } = await axios.post(buildUrl(resourceName), resource);
 
@@ -34,7 +34,7 @@ export const create = async <T extends object = object>(
 export const update = async <T extends object = object>(
   resourceName: string,
   id: number,
-  resource: T
+  resource: Partial<T>
 ): Promise<T> => {
   const { data } = await axios.post(buildUrl(resourceName, id), resource);
 
