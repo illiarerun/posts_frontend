@@ -2,6 +2,8 @@
 
 This is View layer for an Elixir Posts app. API Repository link - [elixir_posts](https://github.com/illiarerun/elixir_posts).
 
+Live version: [link](https://posts-frontend-seven.vercel.app/)
+
 ## Stack:
 - Typescript, React.js
 - Bundler: Vite
