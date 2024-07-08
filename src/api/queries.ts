@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query';
 import { getAllPosts, getOnePost } from './posts';
 
-export const usePosts = () => {
+export const useGetPosts = () => {
   return useQuery({
     queryKey: ['posts'],
     queryFn: () =>
@@ -20,7 +20,7 @@ export const usePosts = () => {
   });
 };
 
-export const usePost = (id: number) => {
+export const useGetPost = (id: number) => {
   return useQuery({
     queryKey: ['post'],
     queryFn: () => getOnePost(id),

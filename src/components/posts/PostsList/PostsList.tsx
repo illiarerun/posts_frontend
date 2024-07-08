@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { Post } from '../../types/Post';
+import { Post } from '../../../types/Post';
 import { List } from 'antd';
-import { PostItem } from './PostItem';
+import { PostItem } from '../PostItem';
 import './PostsList.css';
 
 interface Props {

@@ -7,6 +7,7 @@ import { ErrorPage } from './components/layout/ErrorPage';
 import { Posts } from './routes/posts';
 import { CreatePost } from './routes/create';
 import { EditPost } from './routes/edit';
+import { PostPage } from './routes/post';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: '/edit/:id',
         element: <EditPost />,
+      },
+      {
+        path: '/view/:id',
+        element: <PostPage />,
       },
     ],
   },

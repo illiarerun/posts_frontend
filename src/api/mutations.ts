@@ -1,6 +1,6 @@
 import { useMutation } from 'react-query';
 import { PostFields } from '../types/Post';
-import { createPost, updatePost } from './posts';
+import { createPost, deletePost, updatePost } from './posts';
 
 interface UpdateVariables {
   id: number;
@@ -19,5 +19,12 @@ export const useEditPost = () => {
     mutationKey: 'updatePost',
     mutationFn: ({ id, newPostFields }: UpdateVariables) =>
       updatePost(id, newPostFields),
+  });
+};
+
+export const useDeletePost = () => {
+  return useMutation({
+    mutationKey: 'deletePost',
+    mutationFn: (id: number) => deletePost(id),
   });
 };

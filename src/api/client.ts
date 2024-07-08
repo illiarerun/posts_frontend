@@ -45,7 +45,7 @@ export const deleteRecord = async (
   resourceName: string,
   id: number
 ): Promise<boolean> => {
-  const response = await axios.post(buildUrl(resourceName, id));
+  const response = await axios.delete(buildUrl(resourceName, id));
 
   if (response.status !== 204) {
     return false;

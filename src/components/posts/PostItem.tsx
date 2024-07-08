@@ -2,6 +2,9 @@ import Item, { Meta } from 'antd/es/list/Item';
 import { FC } from 'react';
 import { Post } from '../../types/Post';
 import { NavButton } from '../ui/NavButton';
+import { transformInsertedDate } from '../../helpers/date';
+import { EditButton } from './EditButton';
+import { DeleteButton } from './DeleteButton';
 
 interface Props {
   post: Post;
@@ -14,15 +17,14 @@ export const PostItem: FC<Props> = ({ post }) => {
     <Item
       key={id}
       actions={[
-        <NavButton to={`edit/${id}`} type="default" size="middle">
-          Edit
+        <NavButton to={`view/${id}`} size="middle">
+          Read
         </NavButton>,
+        <EditButton id={id} />,
+        <DeleteButton id={id} />,
       ]}
     >
-      <Meta
-        title={title}
-        description={inserted_at ? new Date(inserted_at).toDateString() : null}
-      />
+      <Meta title={title} description={transformInsertedDate(inserted_at)} />
     </Item>
   );
 };

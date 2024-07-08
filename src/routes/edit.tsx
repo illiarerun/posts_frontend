@@ -1,38 +1,13 @@
 import { Flex, Typography } from 'antd';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useOpenNotification } from '../contexts/NotificationContext';
-import { usePost } from '../api/queries';
 import { Loader } from '../components/layout/Loader';
 import { EditPostForm } from '../components/forms/EditPostForm';
+import { usePostFromRoute } from '../hooks/usePostFromRoute';
 
 export const EditPost = () => {
-  const { id } = useParams();
-  const openNotification = useOpenNotification();
-  const navigate = useNavigate();
-
-  if (!id) {
-    openNotification({
-      type: 'error',
-      message: `Please provide "id" in url, example: /edit/56`,
-    });
-
-    navigate('/');
-  }
-
-  const { data, isLoading, error } = usePost(Number(id));
+  const { data, isLoading } = usePostFromRoute();
 
   if (isLoading) {
     return <Loader loading />;
-  }
-
-  if (error || !data) {
-    openNotification({
-      type: 'error',
-      message: `Post with id:${id} not found!`,
-      description: `Details: ${(error as Error).message}`,
-    });
-
-    navigate('/');
   }
 
   return (

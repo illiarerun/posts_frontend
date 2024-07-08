@@ -20,7 +20,7 @@ export const CreatePostForm = () => {
     mutate(values, {
       onError: (error) => {
         openNotification({
-          message: 'Error',
+          message: 'Error while creating post',
           type: 'error',
           description: (error as Error).message,
         });

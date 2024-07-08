@@ -1,12 +1,12 @@
-import { PostsList } from '../components/posts/PostsList';
-import { usePosts } from '../api/queries';
+import { PostsList } from '../components/posts/PostsList/PostsList';
+import { useGetPosts } from '../api/queries';
 import { Loader } from '../components/layout/Loader';
 import { Flex } from 'antd';
 import { NavButton } from '../components/ui/NavButton';
 import { useOpenNotification } from '../contexts/NotificationContext';
 
 export const Posts = () => {
-  const { data, error, isLoading } = usePosts();
+  const { data, error, isLoading } = useGetPosts();
   const openNotification = useOpenNotification();
 
   if (isLoading) {
@@ -15,7 +15,7 @@ export const Posts = () => {
 
   if (error) {
     openNotification({
-      message: 'Error',
+      message: 'Error during loading posts',
       type: 'error',
       description: (error as Error).message,
     });
