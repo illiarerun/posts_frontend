@@ -13,8 +13,8 @@ export const createPost = async (postData: PostFields) => {
   return create<Post>('posts', { post: postData });
 };
 
-export const updatePost = async (id: number, postData: PostFields) => {
-  return update<Post>('posts', id, postData);
+export const updatePost = async (id: number, postData: Partial<PostFields>) => {
+  return update<Post>('posts', id, { post: postData });
 };
 
 export const deletePost = async (id: number) => {

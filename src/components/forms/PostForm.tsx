@@ -5,9 +5,16 @@ import { FC } from 'react';
 
 type Props = FormProps & {
   onReset?: () => void;
+  submitText?: string;
 };
 
-export const PostForm: FC<Props> = ({ onFinish, onReset, form }) => {
+export const PostForm: FC<Props> = ({
+  onFinish,
+  onReset,
+  form,
+  submitText,
+  initialValues,
+}) => {
   return (
     <Form<PostFields>
       labelCol={{ span: 8 }}
@@ -16,6 +23,7 @@ export const PostForm: FC<Props> = ({ onFinish, onReset, form }) => {
       form={form}
       autoComplete="off"
       className="form-container"
+      initialValues={initialValues}
     >
       <Form.Item<PostFields>
         label="Title"
@@ -43,7 +51,7 @@ export const PostForm: FC<Props> = ({ onFinish, onReset, form }) => {
       <Form.Item>
         <Space>
           <Button type="primary" htmlType="submit">
-            Submit
+            {submitText || 'Submit'}
           </Button>
           <Button htmlType="button" onClick={onReset}>
             Reset

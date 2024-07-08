@@ -1,22 +1,28 @@
-import { Button } from 'antd';
 import Item, { Meta } from 'antd/es/list/Item';
 import { FC } from 'react';
 import { Post } from '../../types/Post';
+import { NavButton } from '../ui/NavButton';
 
 interface Props {
   post: Post;
 }
 
 export const PostItem: FC<Props> = ({ post }) => {
+  const { id, title, inserted_at } = post;
+
   return (
-    <Item key={post.id} actions={[<Button>Edit</Button>]}>
+    <Item
+      key={id}
+      actions={[
+        <NavButton to={`edit/${id}`} type="default" size="middle">
+          Edit
+        </NavButton>,
+      ]}
+    >
       <Meta
-        title={post.title}
-        description={
-          post?.inserted_at ? new Date(post?.inserted_at).toDateString() : null
-        }
+        title={title}
+        description={inserted_at ? new Date(inserted_at).toDateString() : null}
       />
-      {post.body}
     </Item>
   );
 };

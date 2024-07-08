@@ -34,9 +34,9 @@ export const create = async <T extends object = object>(
 export const update = async <T extends object = object>(
   resourceName: string,
   id: number,
-  resource: Partial<T>
+  resource: unknown
 ): Promise<T> => {
-  const { data } = await axios.post(buildUrl(resourceName, id), resource);
+  const { data } = await axios.patch(buildUrl(resourceName, id), resource);
 
   return processSingleResponse<T>(data);
 };

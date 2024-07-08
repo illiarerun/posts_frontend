@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query';
-import { getAllPosts } from './posts';
+import { getAllPosts, getOnePost } from './posts';
 
 export const usePosts = () => {
   return useQuery({
@@ -17,5 +17,12 @@ export const usePosts = () => {
           return bCreationTime.getTime() - aCreationTime.getTime();
         });
       }),
+  });
+};
+
+export const usePost = (id: number) => {
+  return useQuery({
+    queryKey: ['post'],
+    queryFn: () => getOnePost(id),
   });
 };

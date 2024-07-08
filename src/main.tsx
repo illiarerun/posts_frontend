@@ -6,6 +6,7 @@ import 'antd/dist/reset.css';
 import { ErrorPage } from './components/layout/ErrorPage';
 import { Posts } from './routes/posts';
 import { CreatePost } from './routes/create';
+import { EditPost } from './routes/edit';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: '/create',
         element: <CreatePost />,
+      },
+      {
+        path: '/edit/:id',
+        element: <EditPost />,
       },
     ],
   },
