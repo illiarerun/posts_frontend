@@ -1,30 +1,29 @@
-# React + TypeScript + Vite
+# Posts Frontend Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is View layer for an Elixir Posts app. API Repository link - [elixir_posts](https://github.com/illiarerun/elixir_posts).
 
-Currently, two official plugins are available:
+## Stack:
+- Typescript, React.js
+- Bundler: Vite
+- Styling: AntDesign
+- Routing: React Router
+- API: Axios and React Query
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+## Local development guide:
+- Clone repository using any tool you'd like, for example, with CLI: `git clone git@github.com:illiarerun/posts_frontend.git`
+- Navigate to project directory `cd posts_frontend`
+- Make sure that your elixir_posts api is running on `localhost:4000` or create `.env` file in the root with `VITE_API_URL` variable which will store your elixir_posts api URI:
+```example
+VITE_API_URL=http://localhost:4000/api
 ```
+  
+### NPM option:
+- Exec `npm run dev`
+- Visit `localhost:8080` in your browser
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Docker option:
+- Exec `docker build . -t <your_desired_tag_name>`
+- Exec `docker run -p 8080:8080 <your_tag_name_used_in_prev_cmd>`
+- Visit `localhost:8080` in your browser
+
+  
